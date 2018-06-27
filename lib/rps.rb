@@ -1,31 +1,16 @@
 require 'pry'
 
 class RPS
-  def initialize (choice, choice2)
-    @choice = choice
-    @choice2 = choice2
-  end
-
-  def choice
-    @choice
-    @choice2
-  end
-
-  def wins?
-    if (@choice == 'rock' && @choice2 == 'scissors') || (@choice == 'scissors' && @choice2 == 'paper') || (@choice == 'paper' && @choice2 == 'rock')
+  def wins?(x, y)
+    if (x == 'rock' && y == 'scissors') || (x == 'scissors' && y == 'paper') || (x == 'paper' && y == 'rock')
       puts 'You Win!'
-    elsif (@choice == 'paper' && @choice2 == 'paper') || (@choice == 'rock' && @choice2 == 'rock') || (@choice == 'scissors' && @choice2 == 'scissors')
+      true
+    elsif (x == 'paper' && y == 'paper') || (x == 'rock' && y == 'rock') || (x == 'scissors' && y == 'scissors')
       puts 'It\'s a tie!'
-    elsif (@choice == 'scissors' && @choice2 == 'rock') || (@choice == 'paper' && @choice2 == 'scissors') || (@choice == 'rock' && @choice2 == 'paper')
+      false
+    elsif (x == 'scissors' && y == 'rock') || (x == 'paper' && y == 'scissors') || (x == 'rock' && y == 'paper')
       puts 'You lost!'
+      false
     end
   end
 end
-
-puts 'Let\'s play a game of Rock, Paper, Scissors!'
-print 'Player 1 - Enter Rock, Paper, or Scissors: '
-player_choice = gets.chomp.to_s.downcase
-print 'Player 2 - Enter Rock, Paper, or Scissors: '
-player2_choice = gets.chomp.to_s.downcase
-game = RPS.new(player_choice, player2_choice)
-game.wins?
